@@ -1,9 +1,19 @@
 // Left div dynamic data loading for catagory
-
+function removeActive()
+{
+    const removeActive=document.querySelectorAll(".rmvActive");
+    console.log(removeActive);
+    removeActive.forEach(remove=>remove.classList.remove("active"));
+}
 function activeList(id) 
 {
     const url=`https://openapi.programming-hero.com/api/category/${id}`; //plants by catagory;
     fetch(url).then(res=>res.json()).then(data=>{
+        //console.log(data);
+        const addActive=document.getElementById(`category-${id}`);
+        //console.log(addActive);
+        removeActive();
+        addActive.classList.add("active");
         displayActiveList(data.plants)
     });
 }
@@ -86,11 +96,11 @@ function displayCategory(names)  //Displaying the category list here
     categoryList.innerHTML="";
     names.forEach(name=>{
         const listName=document.createElement("div");
-        listName.innerHTML=`<p onclick="activeList(${name.id})" class="categoryName m-1 font-medium text-base p-1 rounded-md cursor-pointer hover:shadow-lg hover:bg-[#F0FDF460] ">${name.category_name}</p>`;
+        listName.innerHTML=`<p id="category-${name.id}" onclick="activeList(${name.id})" class="categoryName m-1 font-medium text-base p-1 rounded-md cursor-pointer hover:shadow-lg hover:bg-[#F0FDF460] rmvActive">${name.category_name}</p>`;
         categoryList.appendChild(listName);
     })
-
 }
+
 function loadCategory() //categories are loading from api
 {
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -110,4 +120,4 @@ function loadMidDiv()
 
 // calling all functions here
 loadCategory(); //1;
-//loadMidDiv(); //2;
+loadMidDiv(); //2;
