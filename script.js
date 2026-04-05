@@ -11,7 +11,7 @@ function loadModal(id)
 {
     const url=`https://openapi.programming-hero.com/api/plant/${id}`;
     fetch(url).then(res=>res.json()).then(data=>{
-        console.log(data.plants);
+        //console.log(data.plants);
         displayModal(data.plants);
     });
 }
@@ -20,7 +20,9 @@ function displayModal(details)
     //console.log(typeof(details));
     //console.log(details);
    const modal= document.getElementById("my_modal_2");
-   modal.showModal(); 
+   //console.log(modal);
+   modal.showModal(); //this is the build in functionality in daisy ui this is mendatory
+    //modal.showModal();
    document.getElementById("modalDiv").innerHTML=`<div class=" bg-white p-5 space-y-3">
                                     <img src="${details.image}" alt="#" class="rounded-md">
                                     <h6 class="font-bold text-xl btn bg-transparent border-none">${details.name}</h6>
@@ -29,7 +31,7 @@ function displayModal(details)
                                         <span class="text-green-800 bg-green-200 px-3 rounded-full">${details.category}</span>
                                         <p class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i>${details.price}</p>
                                     </div>
-                                    <button class="btn bg-green-600 text-white w-full rounded-full font-semibold">Add to Cart</button>
+                                   
                                 </div>`
 }
 function loadCart(id) 
