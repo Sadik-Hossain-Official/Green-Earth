@@ -65,20 +65,18 @@
             <!-- container section -->
              <section class="dynamic-container w-11/12 mx-auto py-16 ">
                 <h3 class="text-center font-bold text-3xl">Choose Your Tree</h3>
-                <div class="pt-5  flex flex-col md:flex-row md:justify-between">
+                <div class="pt-5  flex flex-col md:flex-row md:justify-between shadow-lg">
 
                     <!-- Catagory segment -->
                     <div class="left-div  md:w-[15%]" id="catagory">
-                        <h5 class="font-semibold text-xl">Catagories</h5>
+                        <h5 class="font-semibold text-xl pl-1">Catagories</h5>
                         <div id="catagory-list" class="py-1.5">
-                            <p class="m-1 font-medium text-base p-1 rounded-md">All Trees</p>
-                            <p class="m-1 font-medium text-base p-1 rounded-md">All Trees</p>
                             <p class="m-1 font-medium text-base p-1 rounded-md active">All Trees</p>
                         </div>
                     </div>
 
                     <!-- Main Cards segment -->
-                    <div class="mid-div grid grid-cols-1 md:grid-cols-3 gap-4" id="cardContent">
+                    <div class="mid-div grid grid-cols-1 md:grid-cols-3 gap-4 max-h-96 overflow-y-auto " id="cardContent">
                         <div class=" bg-white p-5 space-y-3 md:w-60">
                             <img src="assets/about.png" alt="#" class="rounded-md">
                             <h6 class="font-bold text-xl btn bg-transparent border-none">Tree Name</h6>
@@ -99,39 +97,31 @@
                             </div>
                             <button class="btn bg-green-600 text-white w-full rounded-full font-semibold">Add to Cart</button>
                         </div>
-                        <div class=" bg-white p-5 space-y-3 md:w-60">
-                            <img src="assets/about.png" alt="#" class="rounded-md">
-                            <h6 class="font-bold text-xl btn bg-transparent border-none">Tree Name</h6>
-                            <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. A veritatis quaerat asperiores similique fugit totam.</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-green-800 bg-green-200 px-3 rounded-full">Catagory</span>
-                                <p class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> Price</p>
-                            </div>
-                            <button class="btn bg-green-600 text-white w-full rounded-full font-semibold">Add to Cart</button>
-                        </div>
-
-
+                        
+<!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_2.showModal()">open modal</button> -->
+<dialog id="my_modal_2" class="modal modal-bottom sm:modal-middle">
+  <div id="modalDiv" class="modal-box">
+   
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
                     </div>
 
                     <!-- your cart segment -->
-                    <div class="right-div bg-white p-3  md:w-[20%]" id="yourCardBox">
+                    <div class="right-div bg-white p-3  md:w-[20%] max-h-96 overflow-y-auto" id="yourCardBox">
                         <h5 class="font-semibold text-xl">Your Cart</h5>
                         <div id="yourCart" class="pt-2">
 
-                            <div class="bg-[#F0FDF4] p-2 flex items-center justify-between my-1">
+                            <!-- <div class="bg-[#F0FDF4] p-2 flex items-center justify-between my-1">
                                 <div>
                                     <h6 class="font-bold">Tree name</h6>
                                     <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> price x Quantity</p>
                                 </div>
                                 <span class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
-                            </div>
-                            <div class="bg-[#F0FDF4] p-2 flex items-center justify-between my-1">
-                                <div>
-                                    <h6 class="font-bold">Tree name</h6>
-                                    <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> price x Quantity</p>
-                                </div>
-                                <span class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
-                            </div>
+                            </div> -->
 
                         </div>
                         <hr>
@@ -203,5 +193,7 @@
     <footer class="bg-[#14532D]">
         <p class="text-center text-white font-bold py-4">© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
+    <!-- javasctipt connection -->
+     <script src="script.js"></script>
 </body>
 </html>
