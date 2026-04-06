@@ -1,4 +1,5 @@
 // dynamic data functionality
+
 function loadSpinner(status)
 {
     if(status==true)
@@ -31,10 +32,6 @@ function activeList(id)
         displayActiveList(data.plants)
     });
 }
-function removePlant(targetedChild)
-{
-    targetedChild.parentElement.remove(); //new thing learned 
-}
 function loadModal(id)
 {   
     loadSpinner(true);
@@ -64,14 +61,31 @@ function displayModal(details)
                                 </div>`
     loadSpinner(false);
 }
+let total=0;
+function updateAmount()
+{
+    document.getElementById("totalPrice").innerText=total;
+}
 function loadCart(id) 
 {
     const url=`https://openapi.programming-hero.com/api/plant/${id}`; //plants by id;
     fetch(url).then(res=>res.json()).then(data=>{
         //console.log(data.plants);
         //console.log(typeof(data.plants));
+        const amount=data.plants.price;
+        //console.log(amount);
+        //typeof(console.log(amount));
+        total+=amount;
+        updateAmount();
        displayCart(data.plants); //data is an object here;
     });
+}
+function removePlant(targetedChild, amount)
+{
+    targetedChild.parentElement.remove(); //new thing learned 
+    total-=amount;
+    updateAmount();
+
 }
 function displayCart(cart)
 {   
@@ -85,7 +99,7 @@ function displayCart(cart)
                                     <h6 class="font-bold">${cart.name}</h6>
                                     <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> ${cart.price}</p>
                                 </div>
-                                <span onclick="removePlant(this)" class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
+                                <span onclick="removePlant(this,${cart.price})" class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
                      </div>`;
     containerCart.appendChild(Cart);
     
