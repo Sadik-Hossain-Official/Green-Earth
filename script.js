@@ -31,6 +31,10 @@ function activeList(id)
         displayActiveList(data.plants)
     });
 }
+function removePlant(targetedChild)
+{
+    targetedChild.parentElement.remove(); //new thing learned 
+}
 function loadModal(id)
 {   
     loadSpinner(true);
@@ -76,12 +80,12 @@ function displayCart(cart)
     //console.log(containerCart);
     //containerCart.innerHTML=;
     const Cart=document.createElement("div");
-    Cart.innerHTML=`<div class="bg-[#F0FDF4] p-2 flex items-center justify-between my-1">
+    Cart.innerHTML=`<div class="bg-[#F0FDF4] p-2 flex items-center  justify-between my-1">
                                 <div>
                                     <h6 class="font-bold">${cart.name}</h6>
                                     <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> ${cart.price}</p>
                                 </div>
-                                <span class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
+                                <span onclick="removePlant(this)" class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
                      </div>`;
     containerCart.appendChild(Cart);
     
