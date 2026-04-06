@@ -1,12 +1,26 @@
-// Left div dynamic data loading for catagory
+// dynamic data functionality
+function loadSpinner(status)
+{
+    if(status==true)
+    {
+        document.getElementById("spinner").classList.remove("opacity-0");
+        document.getElementById("dynamicDivs").classList.add("opacity-0");
+    }
+    else
+    {
+        document.getElementById("spinner").classList.add("opacity-0");
+        document.getElementById("dynamicDivs").classList.remove("opacity-0");
+    }
+}
 function removeActive()
 {
     const removeActive=document.querySelectorAll(".rmvActive");
-    console.log(removeActive);
+    //console.log(removeActive);
     removeActive.forEach(remove=>remove.classList.remove("active"));
 }
 function activeList(id) 
 {
+    loadSpinner(true);
     const url=`https://openapi.programming-hero.com/api/category/${id}`; //plants by catagory;
     fetch(url).then(res=>res.json()).then(data=>{
         //console.log(data);
@@ -18,7 +32,8 @@ function activeList(id)
     });
 }
 function loadModal(id)
-{
+{   
+    loadSpinner(true);
     const url=`https://openapi.programming-hero.com/api/plant/${id}`;
     fetch(url).then(res=>res.json()).then(data=>{
         //console.log(data.plants);
@@ -43,6 +58,7 @@ function displayModal(details)
                                     </div>
                                    
                                 </div>`
+    loadSpinner(false);
 }
 function loadCart(id) 
 {
@@ -88,6 +104,7 @@ function displayActiveList(plants)
                                 </div>`;
          displayCard.appendChild(createCard);
     })
+    loadSpinner(false);
 }
 function displayCategory(names)  //Displaying the category list here
 {
