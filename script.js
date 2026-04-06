@@ -61,6 +61,7 @@ function displayModal(details)
                                 </div>`
     loadSpinner(false);
 }
+const cartID=[]; //to track the id of product
 let total=0;
 function updateAmount()
 {
@@ -76,9 +77,11 @@ function loadCart(id)
         //console.log(amount);
         //typeof(console.log(amount));
         total+=amount;
+        cartID.push(id);
         updateAmount();
        displayCart(data.plants); //data is an object here;
     });
+
 }
 function removePlant(targetedChild, amount)
 {
@@ -97,7 +100,8 @@ function displayCart(cart)
     Cart.innerHTML=`<div class="bg-[#F0FDF4] p-2 flex items-center  justify-between my-1">
                                 <div>
                                     <h6 class="font-bold">${cart.name}</h6>
-                                    <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i> ${cart.price}</p>
+                                    <p class="font-extralight"><i class="fa-solid fa-bangladeshi-taka-sign font-extralight"></i>${cart.price}
+                                    </p>
                                 </div>
                                 <span onclick="removePlant(this,${cart.price})" class="btn btn-xs btn-ghost"><i class="fa-solid fa-xmark"></i></span>
                      </div>`;
